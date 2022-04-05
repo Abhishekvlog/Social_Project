@@ -39,6 +39,7 @@ class Add_DetailFragment : Fragment(R.layout.fragment_add__detail) {
             titleTxt = et_title_input.text.toString()
             descriptionTxt = et_desc_input.text.toString()
             numberTxt = check.user_number.toString()
+
             mainViewModel.addDataInFirebase(Data_Entity(titleTxt,descriptionTxt,numberTxt))
         }
         btn_clear.setOnClickListener {

@@ -13,6 +13,9 @@ import com.dexter.social_project.R
 import com.dexter.social_project.ViewModel.MainViewModel
 import com.dexter.social_project.ViewModel.MainViewModelFactory
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -29,7 +32,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mainViewModel.signOut()
         txt_new_user.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.frame_layout, RegisterFragment()).addToBackStack("register").commit()

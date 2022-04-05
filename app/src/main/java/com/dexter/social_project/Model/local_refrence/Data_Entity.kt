@@ -6,10 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Data_database")
 data class Data_Entity(
-    @ColumnInfo(name = "Title") var Title : String,
-    @ColumnInfo(name = "Desc") var Desc : String,
-    @ColumnInfo(name = "number") var number : String
+    @ColumnInfo(name = "Title") var Title: String,
+    @ColumnInfo(name = "Desc") var Desc: String,
+    @ColumnInfo(name = "number") var number: String,
 ) {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id_data") var id_data = 0
+    @ColumnInfo(name = "id_data")
+    var id_data : Int ? = null
 }

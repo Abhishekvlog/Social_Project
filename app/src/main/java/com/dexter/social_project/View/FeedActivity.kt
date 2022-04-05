@@ -42,7 +42,7 @@ class FeedActivity : AppCompatActivity() {
 
     private fun setRecyclerView(list: ArrayList<Data_Entity>) {
         val linearLayoutManager = LinearLayoutManager(this)
-        postAdapter = PostAdapter(list)
+        postAdapter = PostAdapter(list,mainViewModel.datacheck.user_type.lowercase())
         recycler_view_allPosts.apply {
             layoutManager = linearLayoutManager
             this.adapter = postAdapter

@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class SplashScreenActivity : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
-//    lateinit var datacheck: UserModel
+    lateinit var datacheck: UserModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,17 +38,17 @@ class SplashScreenActivity : AppCompatActivity() {
         splash_app_txt.startAnimation(slideAnimation)
 
         CoroutineScope(Dispatchers.IO).launch {
-//            if (refDao.getData().isNotEmpty())
-//                datacheck = refDao.getData()[0]
+            if (refDao.getData().isNotEmpty())
+                datacheck = refDao.getData()[0]
             delay(3000)
             runOnUiThread {
-//                if (datacheck.user_number.isNotEmpty()) {
+                if (::datacheck.isInitialized && datacheck.user_number.isNotEmpty()) {
+                    startActivity(Intent(this@SplashScreenActivity, FeedActivity::class.java))
+                    finish()
+                } else {
                     startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
-                finish()
-//                } else {
-//                    startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
-//                    finish()
-//                }
+                    finish()
+                }
             }
 
         }
