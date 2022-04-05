@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "571462057190",
+    "project_id": "sociallogin-8e3be",
+    "storage_bucket": "sociallogin-8e3be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571462057190:android:9aee9aa200c0eeaf2e0f27",
+        "android_client_info": {
+          "package_name": "com.dexter.social_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571462057190-bd97qr7colhqar5ap3m8i822bfuienut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjL3PxaIpvOteq7zmWYh2JD7_HRqxHLw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571462057190-bd97qr7colhqar5ap3m8i822bfuienut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
