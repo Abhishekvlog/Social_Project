@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_margin="10dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp">
 
@@ -11,7 +12,7 @@
 
         <TextView
             android:id="@+id/show_title_manager"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="Meditation and Work"
@@ -25,18 +26,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/white"
+            android:background="@drawable/rb_bg"
             android:text="untagged"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/show_title_manager" />
 
         <TextView
             android:id="@+id/show_desc_manager"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="In an average 9 to 5 work day, just 5 minutes of deep breathing, reflection, and tension release can work to decrease stress levels and increase overall productivity."
             android:textColor="#1C1B1F"
+            app:layout_constraintBottom_toTopOf="@+id/btn_manage_tags"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_tag_manager" />
@@ -51,6 +53,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/show_desc_manager" />
 
 

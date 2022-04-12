@@ -28,8 +28,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val refDao = Database_Ref.get_Ref_Database(requireContext()).getDao()
-        mainViewModel = ViewModelProvider(requireActivity(), MainViewModelFactory(refDao))[MainViewModel::class.java]
+        mainViewModel = ViewModelProvider(
+            requireActivity(),
+            MainViewModelFactory(refDao)
+        )[MainViewModel::class.java]
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel.signOut()
@@ -37,27 +41,31 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.frame_layout, RegisterFragment()).addToBackStack("register").commit()
         }
-
+        val bundle = this.arguments
+        var type="Creator"
+        if(bundle!=null && bundle.containsKey("type")){
+            if(bundle.getInt("type",1)==2)
+                type="Manager"
+        }
         btn_login.setOnClickListener {
             numberTxt = et_number.text.toString()
             passwordTxt = et_password.text.toString()
-            typeTxt = et_type.text.toString()
-            mainViewModel.addUser(UserModel(numberTxt,passwordTxt,typeTxt))
+            typeTxt = type
+            mainViewModel.addUser(UserModel(numberTxt, passwordTxt, typeTxt))
 
         }
         mainViewModel.isLogin.observe(viewLifecycleOwner, Observer {
-            when(it!!){
-                1-> {
+            when (it!!) {
+                1 -> {
                     Toast.makeText(context, "Successfully Login", Toast.LENGTH_SHORT).show()
-                    et_number.text.clear()
-                    et_password.text.clear()
-                    et_type.text.clear()
-                    startActivity(Intent(requireContext(),FeedActivity::class.java))
+                    et_number.text?.clear()
+                    et_password.text?.clear()
+                    startActivity(Intent(requireContext(), FeedActivity::class.java))
 //                    requireActivity().supportFragmentManager.beginTransaction().add(R.id.frame_layout, FeedFragment()).addToBackStack("feed").commit()
                 }
-                2-> Toast.makeText(context,"Wrong type",Toast.LENGTH_SHORT).show()
-                3 -> Toast.makeText(context,"Wrong password",Toast.LENGTH_SHORT).show()
-                4 -> Toast.makeText(context,"Please enter valid number",Toast.LENGTH_SHORT).show()
+                2 -> Toast.makeText(context, "Wrong type", Toast.LENGTH_SHORT).show()
+                3 -> Toast.makeText(context, "Wrong password", Toast.LENGTH_SHORT).show()
+                4 -> Toast.makeText(context, "Please enter valid number", Toast.LENGTH_SHORT).show()
             }
         })
 

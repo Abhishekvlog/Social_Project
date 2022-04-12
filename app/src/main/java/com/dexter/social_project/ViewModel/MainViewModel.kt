@@ -93,13 +93,38 @@ class MainViewModel(val daoRef: Dao_Ref) : ViewModel() {
         }
     }
 
+    fun fatchData() {
+        databaseReference.child("posts").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    daoRef.deleteAllPosts()
+                }
+
+                for (snapshot in snapshot.children) {
+                    val data: Data_Entity? = snapshot.getValue(Data_Entity::class.java)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        daoRef.addData_in_database(data!!)
+                    }
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
     fun getData(): LiveData<List<Data_Entity>> {
         return daoRef.getData_from_database()
     }
 
+
     fun addDataInFirebase(dataEntity: Data_Entity) {
 
         val key = databaseReference.child("posts").push().key
+        dataEntity.id_data = key!!
         if (dataEntity.Title.isEmpty() || dataEntity.Desc.isEmpty()) {
             isdata.postValue(11)
             // toast -> fields are empty
@@ -110,16 +135,38 @@ class MainViewModel(val daoRef: Dao_Ref) : ViewModel() {
             isdata.postValue(13)
             // toast -> title min length should be 10 and max is 500
         } else {
-            databaseReference.child("posts").child(key!!).setValue(dataEntity)
-//            databaseReference.child("posts").child("Data").child(datacheck!!.user_number).setValue(dataEntity.number)
-//            databaseReference.child("posts").child("Data").child("Title").setValue(dataEntity.Title)
-//            databaseReference.child("posts").child("Data").child("Description").setValue(dataEntity.Desc)
+            databaseReference.child("posts").child(key).setValue(dataEntity)
 
-            CoroutineScope(Dispatchers.IO).launch { daoRef.addData_in_database(dataEntity) }
+//            CoroutineScope(Dispatchers.IO).launch { daoRef.addData_in_database(dataEntity) }
             isdata.postValue(14)
             // toast -> data add successfully
 
         }
+    }
+
+    fun editDataInFirebase(dataEntity: Data_Entity) {
+
+        if (dataEntity.Title.isEmpty() || dataEntity.Desc.isEmpty()) {
+            isdata.postValue(11)
+            // toast -> fields are empty
+        } else if (dataEntity.Title.length < 3 || dataEntity.Title.length > 30) {
+            isdata.postValue(12)
+            // toast -> title min length should be 3 and max is 30
+        } else if (dataEntity.Desc.length < 10 || dataEntity.Desc.length > 500) {
+            isdata.postValue(13)
+            // toast -> title min length should be 10 and max is 500
+        } else {
+            databaseReference.child("posts").child(dataEntity.id_data).setValue(dataEntity)
+
+//            CoroutineScope(Dispatchers.IO).launch { daoRef.addData_in_database(dataEntity) }
+            isdata.postValue(14)
+            // toast -> data add successfully
+
+        }
+    }
+
+    fun addTag(tag: String, dataId: String) {
+        databaseReference.child("posts").child(dataId).child("tag").setValue(tag)
     }
 
 }

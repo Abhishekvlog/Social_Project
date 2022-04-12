@@ -10,11 +10,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         creator_card.setOnClickListener {
-            supportFragmentManager.beginTransaction().add(R.id.frame_layout,LoginFragment())
+            val bundle=Bundle()
+            bundle.putInt("type",1)
+            supportFragmentManager.beginTransaction().add(R.id.frame_layout,LoginFragment::class.java,bundle)
                 .addToBackStack("creator_fragment").commit()
         }
         manager_card.setOnClickListener {
-            supportFragmentManager.beginTransaction().add(R.id.frame_layout,LoginFragment())
+            val bundle=Bundle()
+            bundle.putInt("type",2)
+            supportFragmentManager.beginTransaction().add(R.id.frame_layout,LoginFragment::class.java,bundle)
                 .addToBackStack("manager_fragment").commit()
         }
 

@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/show_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="Meditation and Work"
@@ -22,36 +22,39 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_tag"
+            android:id="@+id/btn_tag_creator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/white"
+            android:background="@drawable/rb_bg"
             android:text="untagged"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/show_title" />
 
         <TextView
             android:id="@+id/show_desc"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit"
             android:text="In an average 9 to 5 work day, just 5 minutes of deep breathing, reflection, and tension release can work to decrease stress levels and increase overall productivity."
             android:textColor="#1C1B1F"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_tag" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_tag_creator" />
 
         <Button
             android:id="@+id/btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginEnd="16dp"
             android:background="#6750A4"
             android:text="Edit"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="16dp"
             app:layout_constraintTop_toBottomOf="@+id/show_desc" />
 
 

@@ -9,48 +9,77 @@
     tools:context=".View.Add_DetailFragment">
 
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFD8E4"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/view2"/>
-
-    <ImageView
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/clear"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Create Post"
+        android:id="@+id/create_post_txt"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"
-        android:id="@+id/btn_clear"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
+        android:id="@+id/btn_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/clear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:src="@drawable/check"
-        app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        android:id="@+id/btn_check"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
-        android:id="@+id/et_title_input"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_margin="16dp"
-        android:background="#E7E0EC"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/input1"
         android:hint="Title"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/view2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_title_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <EditText
-        android:id="@+id/et_desc_input"
+    <com.google.android.material.textfield.TextInputLayout
+
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_margin="16dp"
-        android:background="#E7E0EC"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:hint="Description"
-        app:layout_constraintTop_toBottomOf="@+id/et_title_input" />
+        app:layout_constraintTop_toBottomOf="@+id/input1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_desc_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:background="#E7E0EC"-->
+<!--        android:hint="Description"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/et_title_input" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

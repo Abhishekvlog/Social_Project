@@ -9,8 +9,11 @@ import androidx.room.Query
 @Dao
 interface Dao_Ref {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun addData_in_database(dataEntity: Data_Entity)
+
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertNewItems(itemList: MutableList<Data_Entity>)
 
     @Query("select * from data_database")
     fun getData_from_database() : LiveData<List<Data_Entity>>
@@ -27,4 +30,7 @@ interface Dao_Ref {
 
     @Query("Delete from userAccount")
     fun deleteData()
+
+    @Query("Delete from data_database")
+    fun deleteAllPosts()
 }
